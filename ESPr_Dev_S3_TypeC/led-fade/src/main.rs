@@ -17,7 +17,7 @@ fn main() -> Result<()> {
     esp_idf_sys::link_patches();
 
     let peripherals = Peripherals::take().unwrap();
-    let config = TimerConfig::default().frequency(100.Hz().into());
+    let config = TimerConfig::default().frequency(25.kHz().into());
     let timer_driver = Arc::new(LedcTimerDriver::new(peripherals.ledc.timer0, &config)?);
     let mut driver = LedcDriver::new(
         peripherals.ledc.channel0,
